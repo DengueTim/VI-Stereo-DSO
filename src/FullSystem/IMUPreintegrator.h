@@ -71,13 +71,13 @@ public:
     // skew-symmetric matrix
     static Mat33 skew(const Vec3& v)
     {
-        return Sophus::SO3::hat( v );
+        return Sophus::SO3d::hat( v );
     }
     
     // exponential map from Vec3 to mat3x3 (Rodrigues formula)
     static Mat33 Expmap(const Vec3& v)
     {
-        return Sophus::SO3::exp(v).matrix();
+        return Sophus::SO3d::exp(v).matrix();
     }
     
     // right jacobian of SO(3)
@@ -114,7 +114,7 @@ public:
         else
         {
             Vec3 k = w.normalized();  // k - unit direction vector of w
-            Mat33 K = Sophus::SO3::hat(k);
+            Mat33 K = Sophus::SO3d::hat(k);
 //             Jrinv = Mat33::Identity()
 //                     + 0.5*Sophus::SO3::hat(w)
 //                     + ( 1.0 - (1.0+cos(theta))*theta / (2.0*sin(theta)) ) *K*K;

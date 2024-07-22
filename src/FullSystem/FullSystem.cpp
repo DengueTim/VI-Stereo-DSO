@@ -1240,14 +1240,14 @@ void FullSystem::initFirstFrame_imu(FrameHessian* fh){
 
 	norm = g_c.norm();
 	g_c = g_c/norm;
-	Vec3 n = Sophus::SO3::hat(g_c)*g_w;
+	Vec3 n = Sophus::SO3d::hat(g_c)*g_w;
 
 	norm = n.norm();
 	n = n/norm;
 	double sin_theta = norm;
 	double cos_theta = g_c.dot(g_w);
 
-	Mat33 R_wc = cos_theta*Mat33::Identity()+(1-cos_theta)*n*n.transpose()+sin_theta*Sophus::SO3::hat(n);
+	Mat33 R_wc = cos_theta*Mat33::Identity()+(1-cos_theta)*n*n.transpose()+sin_theta*Sophus::SO3d::hat(n);
 
 	SE3 T_wc(R_wc,Vec3::Zero());
 	if(gt_path.size() > 0)
