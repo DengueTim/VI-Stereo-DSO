@@ -450,17 +450,14 @@ ImmaturePointStatus ImmaturePoint::traceStereo(FrameHessian* frame, CalibHessian
 	
 	Mat33f KRKi = Mat33f::Identity().cast<float>();
 	Vec3f Kt;
-	Vec3f bl;
 	Vec2f aff;
 	aff << 1, 0;
 	
 	if(mode_right)
 	{
-	    bl << -baseline, 0, 0;
 	    KRKi = K_right*T_C1C0.rotationMatrix().cast<float>()*K.inverse();
 	    Kt = K_right*T_C1C0.translation().cast<float>();
 	}else{
-	    bl << baseline, 0, 0;
 	    KRKi = K*T_C0C1.rotationMatrix().cast<float>()*K_right.inverse();
 	    Kt = K*T_C0C1.translation().cast<float>();
 	}

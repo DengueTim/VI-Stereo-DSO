@@ -857,19 +857,18 @@ int main( int argc, char** argv )
 // 	    LOG(INFO)<<"i: "<<i<<" index: "<<index;
 // 	    exit(1);
 
-            ImageAndExposure* img;
+		ImageAndExposure* img;
 	    ImageAndExposure* img_right;
-            if(preload){
-                img = preloadedImages[ii];
-		img_right = preloadedImagesRight[ii];
-	    }
-            else{
-                img = reader->getImage(i);
+		if(preload){
+			img = preloadedImages[ii];
+			img_right = preloadedImagesRight[ii];
+	    } else{
+			img = reader->getImage(i);
 // 		img_right = reader_right->getImage(i);
-		if(use_stereo)
-		  img_right = reader_right->getImage(index);
-		else
-		  img_right = img;
+			if(use_stereo)
+		  		img_right = reader_right->getImage(index);
+			else
+		  		img_right = img;
 	    }
 
 
@@ -904,8 +903,11 @@ int main( int argc, char** argv )
 
 
             delete img;
+			if(use_stereo) {
+				delete img_right;
+			}
 
-            if(fullSystem->initFailed || setting_fullResetRequested)
+				if(fullSystem->initFailed || setting_fullResetRequested)
             {
                 if(ii < 250 || setting_fullResetRequested)
                 {

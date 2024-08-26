@@ -1,4 +1,4 @@
-SET(PROJECT_NAME DSO)
+SET(PROJECT_NAME VI-Stereo-DSO)
 
 PROJECT(${PROJECT_NAME})
 CMAKE_MINIMUM_REQUIRED(VERSION 3.5)
@@ -28,7 +28,8 @@ include_directories(${Glog_INCLUDE_DIRS})
 # flags
 add_definitions("-DENABLE_SSE")
 set(CMAKE_CXX_FLAGS
-   "${SSE_FLAGS} -O3 -g -std=c++0x -march=native"
+		"${SSE_FLAGS} -O0 -g3 -std=c++0x -mcpu=apple-m1"
+#   "${SSE_FLAGS} -O3 -g -std=c++0x -march=native"
 #   "${SSE_FLAGS} -O3 -g -std=c++0x -fno-omit-frame-pointer"
 )
 

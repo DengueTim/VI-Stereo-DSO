@@ -891,8 +891,8 @@ void FullSystem::activatePointsMT()
 		}
 		else if(newpoint == (PointHessian*)((long)(-1)) || ph->lastTraceStatus==IPS_OOB)
 		{
-			delete ph;
 			ph->host->immaturePoints[ph->idxInImmaturePoints]=0;
+			delete ph;
 		}
 		else
 		{
@@ -1202,8 +1202,8 @@ void FullSystem::addActiveFrame( ImageAndExposure* image, ImageAndExposure* imag
 // 		exit(1);
 		
 // 		Sophus::Matrix4d T = shell->camToWorld.matrix();
-		Sophus::Matrix4d T = T_WD.matrix()*shell->camToWorld.matrix()*T_WD.inverse().matrix();
-		savetrajectory_tum(SE3(T),run_time);
+		//Sophus::Matrix4d T = T_WD.matrix()*shell->camToWorld.matrix()*T_WD.inverse().matrix();
+		//savetrajectory_tum(SE3(T),run_time);
 // 		savetrajectory(T);
 		
 		return;

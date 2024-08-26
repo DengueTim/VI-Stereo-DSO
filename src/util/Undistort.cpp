@@ -863,14 +863,14 @@ void Undistort::readFromFile(const char* configFileName, int nPars, std::string 
     }
     
     //　l5 第五行，存放baseline, 放到bl中
-    if(std::sscanf(l5.c_str(), "%lf", &baseline) == 1)
-    {
-        printf("Baseline: %lf \n", baseline);
-    }
-    else
-    {
-        printf("Out: Failed to Read Baseline... can not do stereo. \n");
-    }
+//    if(std::sscanf(l5.c_str(), "%lf", &baseline) == 1)
+//    {
+//        printf("Baseline: %lf \n", baseline);
+//    }
+//    else
+//    {
+//        printf("Out: Failed to Read Baseline... can not do stereo. \n");
+//    }
 
     remapX = new float[w*h];
     remapY = new float[w*h];
